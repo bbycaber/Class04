@@ -10,5 +10,32 @@
   <%= @student.university_id %>
 </p>
 
+<p><strong> Average: <%= @student.average %></strong></p>
+
+
+<% if !@student.grades.empty? %>
+<table class="table table-striped">
+<caption><h1>Grade List</h1></caption>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Score</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <% for student in @student.grades %>
+    <tr>
+      <td><%=h student.subject_id%></td>
+      <td><%=h student.name %></td>
+      <td><%=h student.score %></td>
+    </tr>
+    <% end %>
+  </tbody>
+ </table>
+<% end %>
+
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>

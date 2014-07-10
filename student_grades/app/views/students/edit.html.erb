@@ -2,6 +2,7 @@
 
    <p>Name : <%= @student.name %></p>
    <p> Unisersity_id: <%= @student.university_id %></p>
+   <p> Average: <%= @student.average %></p>
 
 <%= form_for(@student) do |f| %>
   <% if @student.errors.any? %>
