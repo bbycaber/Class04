@@ -1,0 +1,49 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :university_id, "University id" %><br>
+    <%= f.number_field :university_id %>
+  </div>
+
+
+  <h2>Grades</h2>
+
+  <div class="field">
+
+    <%= f.fields_for :grades do |ff| %>
+
+           <div >
+               <%= ff.label :subject_id, "Code Grade" %><br>
+               <%= ff.text_field :subject_id %>
+
+               <%= ff.label :name, "Name Grade"%><br>
+               <%= ff.text_field :name%>
+
+               <%= ff.label :score, "Score Grade"%><br>
+               <%= ff.text_field :score %>
+
+           </div>
+
+    <% end %>
+
+  </div>  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
